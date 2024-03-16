@@ -1,0 +1,11 @@
+//
+//  Release.xcconfig
+//  Quizzler-iOS13
+//
+//  Created by Dileep Guntamadugu on 16/3/2024.
+//  Copyright © 2024 The App Brewery. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+API_ENDPOINT = go-backend-hsxoavehfa-ts.a.run.app/api/questions
