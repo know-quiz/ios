@@ -13,17 +13,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var option4: UIButton!
     
     @IBAction func options(_ sender: UIButton) {
-        if(quizProgress <= quizData!.count) {
+        clearButtonBackground()
+        if(quizProgress < quizData!.count) {
             let question = quizData![quizProgress]
             if question.isCorrect(answer: sender.titleLabel!.text!) {
-                print("Correct answer!")
+                sender.backgroundColor = UIColor.green
                 quizProgress += 1
                 renderQuestion()
             } else {
-               print("Incorrect answer.")
+                sender.backgroundColor = UIColor.red
                // Update the UI to show the incorrect answer feedback
             }
         }
+    }
+    
+    func clearButtonBackground() {
+        option1.backgroundColor = UIColor.clear
+        option2.backgroundColor = UIColor.clear
+        option3.backgroundColor = UIColor.clear
+        option4.backgroundColor = UIColor.clear
     }
     
     @IBOutlet weak var QuestionText: UILabel!
@@ -42,15 +50,12 @@ class ViewController: UIViewController {
     }
     
     func renderQuestion() {
-        if(quizProgress < quizData!.count) {
-            let quiz : Question = quizData![quizProgress]
-            QuestionText.text = quiz.question
-            option1!.setTitle(quiz.option1, for: .normal)
-            option2!.setTitle(quiz.option2, for: .normal)
-            option3!.setTitle(quiz.option3, for: .normal)
-            option4!.setTitle(quiz.option4, for: .normal)
-        }
-        
+        let quiz : Question = quizData![quizProgress]
+        QuestionText.text = quiz.question
+        option1!.setTitle(quiz.option1, for: .normal)
+        option2!.setTitle(quiz.option2, for: .normal)
+        option3!.setTitle(quiz.option3, for: .normal)
+        option4!.setTitle(quiz.option4, for: .normal)
     }
     
     func getQuestions() async throws -> [Question] {
